@@ -4,9 +4,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Dariush Lotfi — Desarrollador Web Junior en Barcelona. Frontend, backend, WordPress y proyectos con IA.">
+  <meta property="og:title" content="Dariush Lotfi — Desarrollador Web">
+  <meta property="og:description"
+    content="Desarrollador Web Junior en Barcelona. Frontend, backend, WordPress y proyectos con IA.">
+  <meta property="og:type" content="website">
   <title>Dariush Lotfi — Desarrollador Web</title>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/favicon-192x192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
   <link
-    href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&family=Inter:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="style.css">
@@ -14,12 +25,11 @@
 
 <body>
 
-  <canvas id="matrixCanvas"></canvas>
   <div class="glitch-overlay"></div>
 
   <!-- NAVBAR -->
   <nav id="navbar">
-    <div class="nav-logo">Dariush Lotfi</div>
+    <a href="#hero" class="nav-logo">Dariush Lotfi</a>
     <ul class="nav-links">
       <li><a href="#sobre-mi">Sobre mí</a></li>
       <li><a href="#skills">Skills</a></li>
@@ -37,24 +47,20 @@
       <p class="hero-eyebrow" id="hero-eyebrow"></p>
 
       <h1 class="hero-title">
-        DARIUSH<br>
-        <span class="accent glitch-title" data-text="LOTFI_">LOTFI</span>
+        <span id="hero-title-1"></span><br>
+        <span class="accent glitch-title" data-text="LOTFI_" id="hero-title-2"></span>
       </h1>
 
       <p class="hero-role" id="hero-role"></p>
 
-      <div class="hero-contact-badges">
-        <a href="mailto:dariush.zv@gmail.com" class="hero-badge"><span><i class="bi bi-envelope-fill"></i>
+      <div class="hero-actions">
+        <a href="mailto:dariush.zv@gmail.com" class="hero-badge"><svg class="border-draw"><rect x="0" y="0" width="100%" height="100%" pathLength="1" /></svg><span><i class="bi bi-envelope-fill"></i>
             dariush.zv@gmail.com</span></a>
-        <a href="tel:+34654576471" class="hero-badge"><span><i class="bi bi-telephone-fill"></i> 654 576 471</span></a>
-      </div>
-
-      <div class="hero-btns">
-        <a href="#proyectos" class="btn-primary"><span>Ver proyectos</span></a>
-        <a href="Curriculum-Dariush.pdf" download class="btn-outline"><span><i class="bi bi-download"></i> Descargar
+        <a href="tel:+34654576471" class="hero-badge"><svg class="border-draw"><rect x="0" y="0" width="100%" height="100%" pathLength="1" /></svg><span><i class="bi bi-telephone-fill"></i> 654 576 471</span></a>
+        <a href="#proyectos" class="btn-primary"><svg class="border-draw"><rect x="0" y="0" width="100%" height="100%" pathLength="1" /></svg><span>Ver proyectos</span></a>
+        <a href="Curriculum-Dariush.pdf" download class="btn-outline"><svg class="border-draw"><rect x="0" y="0" width="100%" height="100%" pathLength="1" /></svg><span><i class="bi bi-download"></i> Descargar
             CV</span></a>
       </div>
-    </div>
     </div>
   </section>
 
@@ -67,11 +73,10 @@
       </div>
       <div class="sobre-grid">
         <div class="sobre-text reveal">
-          <p>Soy desarrollador web recién graduado en el Grado Superior de Desarrollo de Aplicaciones Web (DAW)
+          <p>Soy desarrollador web graduado en el Grado Superior de Desarrollo de Aplicaciones Web (DAW)
             en el ETP Xavier de Barcelona.</p>
           <p>Anteriormente hice el Grado Superior de Comercio internacional y trabajé 2 años como transitario. Eso me
-            enseñó a
-            organizarme, trabajar bajo presión y comunicar bien.
+            enseñó a organizarme, trabajar bajo presión y comunicar bien.
           </p>
           <p>Me muevo bien tanto en frontend como en backend, disfruto construyendo proyectos desde cero y aprendo
             rápido con cada nuevo reto.</p>
@@ -159,30 +164,29 @@
 
         <article class="proyecto-card reveal">
           <div class="proyecto-video-wrap">
-            <video src="Bloodshed.mp4" muted loop playsinline preload="none" controls class="proyecto-video"></video>
+            <video src="FPC.mp4" muted loop playsinline preload="none" controls poster="posters/FPC.jpg"
+              class="proyecto-video"></video>
             <div class="video-overlay"><i class="bi bi-play-circle-fill"></i></div>
           </div>
           <div class="proyecto-info">
             <div class="proyecto-meta">
               <span class="proyecto-num">01</span>
-              <span class="proyecto-tipo">Videojuego</span>
+              <span class="proyecto-tipo">Web corporativa</span>
               <div class="proyecto-links">
-                <a href="https://r0hitjzw.github.io/bloodshedGame-Dariush-Rohit/index.html" target="_blank"><i
-                    class="bi bi-box-arrow-up-right"></i></a>
+                <a href="https://futbolparacontar.com/" target="_blank"><i class="bi bi-box-arrow-up-right"></i></a>
               </div>
             </div>
-            <h3 class="proyecto-nombre">Bloodshed</h3>
-            <p class="proyecto-desc">Videojuego de lucha desarrollado en el grado con un compañero. Construido
-              íntegramente con HTML,
-              CSS y JavaScript vanilla. Incluye pantalla de inicio, zona de entrenamiento y
-              Hall of Fame.</p>
-            <div class="proyecto-stack"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+            <h3 class="proyecto-nombre">FPC Fútbol Para Contar</h3>
+            <p class="proyecto-desc">Blog de fútbol con noticias, citas de jugadores y podcasts.
+              Desarrollado con WordPress y Gutenberg.</p>
+            <div class="proyecto-stack"><span>WordPress</span></div>
           </div>
         </article>
 
         <article class="proyecto-card reveal">
           <div class="proyecto-video-wrap">
-            <video src="Spisok.mp4" muted loop playsinline preload="none" controls class="proyecto-video"></video>
+            <video src="Spisok.mp4" muted loop playsinline preload="none" controls poster="posters/Spisok.jpg"
+              class="proyecto-video"></video>
             <div class="video-overlay"><i class="bi bi-play-circle-fill"></i></div>
           </div>
           <div class="proyecto-info">
@@ -205,54 +209,37 @@
 
         <article class="proyecto-card reveal">
           <div class="proyecto-video-wrap">
-            <video src="Segre.mp4" muted loop playsinline preload="none" controls class="proyecto-video"></video>
+            <video src="Consorci.mp4" muted loop playsinline preload="none" controls poster="posters/Consorci.jpg"
+              class="proyecto-video"></video>
             <div class="video-overlay"><i class="bi bi-play-circle-fill"></i></div>
           </div>
           <div class="proyecto-info">
             <div class="proyecto-meta">
               <span class="proyecto-num">03</span>
-              <span class="proyecto-tipo">Web corporativa</span>
-              <div class="proyecto-links">
-                <a href="https://lampisteriasegre.com/" target="_blank"><i class="bi bi-box-arrow-up-right"></i></a>
-              </div>
-            </div>
-            <h3 class="proyecto-nombre">Lampisteria Segre</h3>
-            <p class="proyecto-desc">Web corporativa para empresa de fontanería. Diseño, desarrollo y publicación
-              completos en WordPress con Gutenberg.</p>
-            <div class="proyecto-stack"><span>WordPress</span><span>Gutenberg</span></div>
-          </div>
-        </article>
-
-        <article class="proyecto-card reveal">
-          <div class="proyecto-video-wrap">
-            <video src="Consorci.mp4" muted loop playsinline preload="none" controls class="proyecto-video"></video>
-            <div class="video-overlay"><i class="bi bi-play-circle-fill"></i></div>
-          </div>
-          <div class="proyecto-info">
-            <div class="proyecto-meta">
-              <span class="proyecto-num">04</span>
               <span class="proyecto-tipo">Web Institucional</span>
               <div class="proyecto-links">
                 <a href="https://consorci.paladinidigital.com/" target="_blank"><i
                     class="bi bi-box-arrow-up-right"></i></a>
               </div>
             </div>
-            <h3 class="proyecto-nombre">Consorci d'Educació</h3>
-            <p class="proyecto-desc">Web institucional para el Consorci d'Educació de Barcelona, desarrollada durante
-              las prácticas en Paladini Digital Solutions. Realizado con WordPress.</p>
-            <div class="proyecto-stack"><span>WordPress</span><span>Gutenberg</span>
+            <h3 class="proyecto-nombre">Consorci d'Educació Barcelona</h3>
+            <p class="proyecto-desc">Web institucional para el Consorci d'Educació de Barcelona, pensada
+              principalmente para promocionar el libro «Arquitectura amb propòsit educatiu». Desarrollada durante
+              las prácticas en Paladini Digital Solutions, con WordPress y Gutenberg.</p>
+            <div class="proyecto-stack"><span>WordPress</span>
             </div>
           </div>
         </article>
 
         <article class="proyecto-card reveal">
           <div class="proyecto-video-wrap">
-            <video src="Rubis.mp4" muted loop playsinline preload="none" controls class="proyecto-video"></video>
+            <video src="Rubis.mp4" muted loop playsinline preload="none" controls poster="posters/Rubis.jpg"
+              class="proyecto-video"></video>
             <div class="video-overlay"><i class="bi bi-play-circle-fill"></i></div>
           </div>
           <div class="proyecto-info">
             <div class="proyecto-meta">
-              <span class="proyecto-num">05</span>
+              <span class="proyecto-num">04</span>
               <span class="proyecto-tipo">Rediseño Web</span>
               <div class="proyecto-links">
                 <a href="https://farmaciarubis.com/" target="_blank"><i class="bi bi-box-arrow-up-right"></i></a>
@@ -261,28 +248,53 @@
             <h3 class="proyecto-nombre">Farmacia Rubís</h3>
             <p class="proyecto-desc">Rediseño de la home y creación de páginas de servicios personalizados y contacto de
               una farmacia
-              online. Desarrollada durante las prácticas en Paladini Digital Solutions. Realizado con WordPress.</p>
-            <div class="proyecto-stack"><span>WordPress</span><span>Gutenberg</span></div>
+              online. Desarrollada durante las prácticas en Paladini Digital Solutions, con WordPress y Gutenberg.</p>
+            <div class="proyecto-stack"><span>WordPress</span></div>
           </div>
         </article>
+
         <article class="proyecto-card reveal">
           <div class="proyecto-video-wrap">
-            <video src="FPC.mp4" muted loop playsinline preload="none" controls class="proyecto-video"></video>
+            <video src="Segre.mp4" muted loop playsinline preload="none" controls poster="posters/Segre.jpg"
+              class="proyecto-video"></video>
+            <div class="video-overlay"><i class="bi bi-play-circle-fill"></i></div>
+          </div>
+          <div class="proyecto-info">
+            <div class="proyecto-meta">
+              <span class="proyecto-num">05</span>
+              <span class="proyecto-tipo">Web corporativa</span>
+              <div class="proyecto-links">
+                <a href="https://lampisteriasegre.com/" target="_blank"><i class="bi bi-box-arrow-up-right"></i></a>
+              </div>
+            </div>
+            <h3 class="proyecto-nombre">Lampisteria Segre</h3>
+            <p class="proyecto-desc">Web corporativa para empresa de fontanería.
+              Desarrollado con WordPress y Gutenberg.</p>
+            <div class="proyecto-stack"><span>WordPress</span></div>
+          </div>
+        </article>
+
+        <article class="proyecto-card reveal">
+          <div class="proyecto-video-wrap">
+            <video src="Bloodshed.mp4" muted loop playsinline preload="none" controls poster="posters/Bloodshed.jpg"
+              class="proyecto-video"></video>
             <div class="video-overlay"><i class="bi bi-play-circle-fill"></i></div>
           </div>
           <div class="proyecto-info">
             <div class="proyecto-meta">
               <span class="proyecto-num">06</span>
-              <span class="proyecto-tipo">Web corporativa</span>
+              <span class="proyecto-tipo">Videojuego</span>
               <div class="proyecto-links">
-                <a href="https://futbolparacontar.com/" target="_blank"><i class="bi bi-box-arrow-up-right"></i></a>
+                <a href="https://r0hitjzw.github.io/bloodshedGame-Dariush-Rohit/index.html" target="_blank"><i
+                    class="bi bi-box-arrow-up-right"></i></a>
               </div>
             </div>
-            <h3 class="proyecto-nombre">FPC Fútbol Para Contar</h3>
-            <p class="proyecto-desc">Blog de fútbol con noticias, citas de jugadores y tarjetas de jugadores. Diseño,
-              desarrollo
-              y publicación completos en WordPress con Gutenberg.</p>
-            <div class="proyecto-stack"><span>WordPress</span><span>Gutenberg</span></div>
+            <h3 class="proyecto-nombre">Bloodshed</h3>
+            <p class="proyecto-desc">Videojuego de lucha desarrollado en el grado con un compañero. Construido
+              íntegramente con HTML,
+              CSS y JavaScript vanilla. Incluye pantalla de inicio, zona de entrenamiento y
+              Hall of Fame.</p>
+            <div class="proyecto-stack"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
           </div>
         </article>
 
@@ -299,7 +311,7 @@
       </div>
       <div class="timeline-grid">
         <div class="timeline-col">
-          <h3 class="timeline-col-title"><i class="bi bi-briefcase"></i> Experiencia</h3>
+          <h3 class="timeline-col-title">Experiencia</h3>
           <div class="timeline-item reveal">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
@@ -332,7 +344,7 @@
           </div>
         </div>
         <div class="timeline-col">
-          <h3 class="timeline-col-title"><i class="bi bi-mortarboard"></i> Formación</h3>
+          <h3 class="timeline-col-title">Formación</h3>
           <div class="timeline-item reveal">
             <div class="timeline-dot"></div>
             <div class="timeline-content">
@@ -365,11 +377,10 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-inner">
-      <span>Dariush Lotfi <span class="accent">—</span> Barcelona 2026</span>
+      <span>Dariush Lotfi <span class="accent">—</span> Barcelona <span id="footer-year"></span></span>
       <span class="footer-status">Desarrollador Web</span>
     </div>
   </footer>
-  </div>
 
   <script src="script.js"></script>
 </body>

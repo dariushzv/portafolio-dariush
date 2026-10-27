@@ -1,45 +1,4 @@
 /* ═══════════════════════════════════════
-   MATRIX RAIN (rojo)
-═══════════════════════════════════════ */
-const canvas = document.getElementById('matrixCanvas');
-const ctx    = canvas.getContext('2d');
-
-function resizeCanvas() {
-  canvas.width  = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-resizeCanvas();
-window.addEventListener('resize', resizeCanvas);
-
-const chars = 'アイウエオカキクケコ01001101DARIUSHLOTFI<>{}[]0110';
-const fontSize = 13;
-let drops = [];
-
-function initDrops() {
-  const cols = Math.floor(canvas.width / fontSize);
-  drops = Array(cols).fill(1);
-}
-initDrops();
-window.addEventListener('resize', initDrops);
-
-function drawMatrix() {
-  ctx.fillStyle = 'rgba(0,0,0,0.05)';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.font = fontSize + 'px Share Tech Mono';
-  drops.forEach((y, i) => {
-    const char = chars[Math.floor(Math.random() * chars.length)];
-    const x    = i * fontSize;
-    ctx.globalAlpha = Math.random() * 0.5 + 0.1;
-    ctx.fillStyle   = y * fontSize < 80 ? '#ff6644' : '#ff2200';
-    ctx.fillText(char, x, y * fontSize);
-    ctx.globalAlpha = 1;
-    if (y * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-    drops[i]++;
-  });
-}
-setInterval(drawMatrix, 55);
-
-/* ═══════════════════════════════════════
    HERO TYPEWRITER
 ═══════════════════════════════════════ */
 function typeSimple(el, text, speed, callback) {
@@ -52,23 +11,72 @@ function typeSimple(el, text, speed, callback) {
 
 window.addEventListener('load', () => {
   const eyebrow = document.getElementById('hero-eyebrow');
+  const title1  = document.getElementById('hero-title-1');
+  const title2  = document.getElementById('hero-title-2');
   const roleEl  = document.getElementById('hero-role');
   setTimeout(() => {
-    typeSimple(eyebrow, '// Junior Web Developer — Barcelona, España', 40, () => {
-      setTimeout(() => {
-        typeSimple(roleEl, 'Frontend  ·  Backend  ·  WordPress  ·  IA', 45);
-      }, 400);
+    typeSimple(eyebrow, 'Junior Web Developer — Barcelona, España', 40);
+    typeSimple(roleEl, 'Frontend  ·  Backend  ·  WordPress  ·  IA', 45);
+    typeSimple(title1, 'DARIUSH', 75, () => {
+      typeSimple(title2, 'LOTFI', 75);
     });
   }, 300);
 });
 
 /* ═══════════════════════════════════════
+   HERO ACTIONS — borde dibujándose (rectángulo)
+═══════════════════════════════════════ */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.querySelectorAll('.hero-actions > a').forEach(a => a.classList.add('drawn'));
+  }, 300);
+});
+
+/* ═══════════════════════════════════════
+   FOOTER — año dinámico
+═══════════════════════════════════════ */
+document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+/* ═══════════════════════════════════════
    NAVBAR — mobile
 ═══════════════════════════════════════ */
+const navbar    = document.getElementById('navbar');
 const navToggle = document.getElementById('nav-toggle');
 const navLinks  = document.querySelector('.nav-links');
-navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+function syncMenuHeight() {
+  navbar.style.setProperty('--menu-h', navLinks.offsetHeight + 'px');
+}
+syncMenuHeight();
+window.addEventListener('resize', syncMenuHeight);
+
+/* libera el transform de la línea del header una vez termina su animación de entrada (1.9s + 0.3s delay) */
+window.addEventListener('load', () => setTimeout(() => navbar.classList.add('line-drawn'), 2300));
+
+navToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+  navbar.classList.toggle('menu-open', navLinks.classList.contains('open'));
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  navLinks.classList.remove('open');
+  navbar.classList.remove('menu-open');
+}));
+
+/* ═══════════════════════════════════════
+   NAVBAR — active link on scroll
+═══════════════════════════════════════ */
+const navAnchors = document.querySelectorAll('.nav-links a');
+const navSections = [...navAnchors].map(a => document.querySelector(a.getAttribute('href')));
+const navObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const i = navSections.indexOf(e.target);
+      navAnchors.forEach(a => a.classList.remove('active'));
+      if (i !== -1) navAnchors[i].classList.add('active');
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+navSections.forEach(s => s && navObs.observe(s));
 
 /* ═══════════════════════════════════════
    SCROLL REVEAL
@@ -80,6 +88,17 @@ const revealObs = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.08 });
 revealEls.forEach(el => revealObs.observe(el));
+
+/* ═══════════════════════════════════════
+   FOOTER — línea animada al llegar abajo
+═══════════════════════════════════════ */
+const footer = document.querySelector('footer');
+const footerObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { footer.classList.add('line-drawn'); footerObs.unobserve(footer); }
+  });
+}, { threshold: 0.1 });
+footerObs.observe(footer);
 
 /* ═══════════════════════════════════════
    VIDEO — play on click
