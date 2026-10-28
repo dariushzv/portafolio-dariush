@@ -778,7 +778,14 @@ ul {
 .sobre-terminal {
   border: 1px solid var(--border);
   overflow: hidden;
-  background: var(--panel)
+  background: var(--panel);
+  /* Incluye opacity/transform del .reveal para no perder su fade-in al hacer scroll */
+  transition: opacity 0.55s ease, transform 0.55s ease, border-color 0.4s ease, box-shadow 0.4s ease !important;
+}
+
+.sobre-terminal:hover {
+  border-color: var(--red);
+  box-shadow: 0 0 24px rgba(var(--red-rgb), 0.18);
 }
 
 .terminal-header {
@@ -787,7 +794,12 @@ ul {
   gap: 0.5rem;
   padding: 0.6rem 1rem;
   background: #0d0d0d;
-  border-bottom: 1px solid var(--border)
+  border-bottom: 1px solid var(--border);
+  transition: border-color 0.4s ease;
+}
+
+.sobre-terminal:hover .terminal-header {
+  border-bottom-color: var(--red);
 }
 
 .dot {
@@ -844,7 +856,7 @@ ul {
 ═══════════════════════════════════════ */
 .skills-icons-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 1rem;
 }
 
