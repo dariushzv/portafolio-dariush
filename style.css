@@ -716,7 +716,15 @@ ul {
   letter-spacing: 0.5px;
   border: 1px solid var(--border);
   padding: 0.3rem 0.7rem;
-  color: #999
+  color: #999;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, color 0.4s ease;
+}
+
+/* Cada idioma se ilumina de forma independiente, solo el que se señala */
+.lang-badge:hover {
+  border-color: var(--red);
+  box-shadow: 0 0 8px rgba(255, 0, 0, 0.18);
+  color: var(--white);
 }
 
 .sobre-terminal {
@@ -865,12 +873,25 @@ ul {
   overflow: hidden;
   box-shadow: 0 0 40px rgba(255, 0, 0, 0.06);
   isolation: isolate;
-  transition: border-color 0.1s ease-out, box-shadow 0.1s ease-out;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 .proyecto-video-wrap:hover {
   border-color: var(--red);
   box-shadow: 0 0 40px rgba(255, 0, 0, 0.18);
+}
+
+/* Vídeo y todas las pastillas del stack se iluminan juntos dentro de la misma tarjeta,
+   tanto si el hover entra por el vídeo como por cualquiera de las pastillas */
+.proyecto-card:has(.proyecto-video-wrap:hover, .proyecto-stack span:hover) .proyecto-video-wrap {
+  border-color: var(--red);
+  box-shadow: 0 0 40px rgba(255, 0, 0, 0.18);
+}
+
+.proyecto-card:has(.proyecto-video-wrap:hover, .proyecto-stack span:hover) .proyecto-stack span {
+  border-color: var(--red);
+  box-shadow: 0 0 8px rgba(255, 0, 0, 0.18);
+  color: var(--white);
 }
 
 .proyecto-video {
@@ -1021,7 +1042,7 @@ ul {
   border: 1px solid rgba(255, 0, 0, 0.2);
   color: #bbb;
   padding: 0.25rem 0.65rem;
-  transition: border-color 0.1s ease-out, box-shadow 0.1s ease-out, color 0.1s ease-out;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, color 0.4s ease;
 }
 
 .proyecto-stack span:hover {
@@ -1085,7 +1106,7 @@ ul {
 .timeline-date {
   font-size: 0.8rem;
   letter-spacing: 3px;
-  color: #ff3333;
+  color: var(--red);
   display: block;
   margin-bottom: 0.3rem;
   text-shadow: 0 0 6px rgba(255, 0, 0, 0.6)
@@ -1333,7 +1354,7 @@ footer.line-drawn .footer-inner {
   }
 
   .hero-eyebrow {
-    min-height: 3rem;
+    min-height: 3.5rem;
   }
 
   .hero-role {
