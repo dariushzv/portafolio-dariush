@@ -430,6 +430,10 @@ ul {
   min-height: 1.5rem;
 }
 
+.hero-role .role-break {
+  display: none;
+}
+
 /* Acciones del hero — grid 2×2, las 4 con el mismo ancho */
 .hero-actions {
   display: grid;
@@ -1359,6 +1363,14 @@ footer.line-drawn .footer-inner {
 
   .hero-role {
     min-height: 3.5rem;
+  }
+
+  .hero-role .role-dot {
+    display: none;
+  }
+
+  .hero-role .role-break {
+    display: inline;
   }
 
   .section {

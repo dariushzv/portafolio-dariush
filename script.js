@@ -13,10 +13,13 @@ window.addEventListener('load', () => {
   const eyebrow = document.getElementById('hero-eyebrow');
   const title1  = document.getElementById('hero-title-1');
   const title2  = document.getElementById('hero-title-2');
-  const roleEl  = document.getElementById('hero-role');
+  const role1   = document.getElementById('hero-role-1');
+  const role2   = document.getElementById('hero-role-2');
   setTimeout(() => {
-    typeSimple(eyebrow, 'Junior Web Developer — Barcelona, España', 40);
-    typeSimple(roleEl, 'Frontend  ·  Backend  ·  WordPress  ·  IA', 45);
+    typeSimple(eyebrow, 'Junior Web Developer — Barcelona, España', 40);
+    typeSimple(role1, 'Frontend  ·  Backend', 45, () => {
+      typeSimple(role2, 'WordPress  ·  IA', 45);
+    });
     typeSimple(title1, 'DARIUSH', 75, () => {
       typeSimple(title2, 'LOTFI', 75);
     });
