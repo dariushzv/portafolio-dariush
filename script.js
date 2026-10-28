@@ -36,11 +36,6 @@ window.addEventListener('load', () => {
 });
 
 /* ═══════════════════════════════════════
-   FOOTER — año dinámico
-═══════════════════════════════════════ */
-document.getElementById('footer-year').textContent = new Date().getFullYear();
-
-/* ═══════════════════════════════════════
    NAVBAR — mobile
 ═══════════════════════════════════════ */
 const navbar    = document.getElementById('navbar');
@@ -57,12 +52,14 @@ window.addEventListener('resize', syncMenuHeight);
 window.addEventListener('load', () => setTimeout(() => navbar.classList.add('line-drawn'), 2300));
 
 navToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
-  navbar.classList.toggle('menu-open', navLinks.classList.contains('open'));
+  const isOpen = navLinks.classList.toggle('open');
+  navbar.classList.toggle('menu-open', isOpen);
+  navToggle.classList.toggle('open', isOpen);
 });
 navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
   navLinks.classList.remove('open');
   navbar.classList.remove('menu-open');
+  navToggle.classList.remove('open');
 }));
 
 /* ═══════════════════════════════════════
@@ -117,3 +114,36 @@ document.querySelectorAll('.proyecto-video-wrap').forEach(wrap => {
     if (!entries[0].isIntersecting) { video.pause(); wrap.classList.remove('playing'); }
   }, { threshold: 0.2 }).observe(wrap);
 });
+
+/* ═══════════════════════════════════════
+   EASTER EGG — ciclo de colores hacker
+═══════════════════════════════════════ */
+const easterDot = document.getElementById('easter-dot');
+if (easterDot) {
+  const THEME_COLORS = ['#ff0000', '#29fe13', '#07daf6', '#ff00c8'];
+
+  function hexToRgbList(hex) {
+    const n = parseInt(hex.slice(1), 16);
+    return [(n >> 16) & 255, (n >> 8) & 255, n & 255].join(', ');
+  }
+
+  function applyThemeColor(index) {
+    if (index === 0) {
+      document.documentElement.style.removeProperty('--red');
+      document.documentElement.style.removeProperty('--red-rgb');
+    } else {
+      document.documentElement.style.setProperty('--red', THEME_COLORS[index]);
+      document.documentElement.style.setProperty('--red-rgb', hexToRgbList(THEME_COLORS[index]));
+    }
+  }
+
+  let themeIndex = parseInt(localStorage.getItem('pdsThemeIndex'), 10);
+  if (isNaN(themeIndex) || themeIndex < 0 || themeIndex >= THEME_COLORS.length) themeIndex = 0;
+  applyThemeColor(themeIndex);
+
+  easterDot.addEventListener('click', () => {
+    themeIndex = (themeIndex + 1) % THEME_COLORS.length;
+    applyThemeColor(themeIndex);
+    localStorage.setItem('pdsThemeIndex', themeIndex);
+  });
+}
